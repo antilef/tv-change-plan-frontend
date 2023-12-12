@@ -1,9 +1,15 @@
 import './App.css'
 
+import { PlanDetails } from './components/plan-details'
+import { PlanList } from './components/plan-list'
+
 function App () {
   return (
     <>
-      <h1>Hello world</h1>
+      <main className='container'>
+        <PlanDetails />
+        <PlanList />
+      </main>
     </>
   )
 }
