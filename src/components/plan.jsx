@@ -1,7 +1,20 @@
+import { Card, CardContent, Typography, Button, CardMedia, CardActions } from '@mui/material'
+import { ChangePlanModal } from './change-plan-modal'
+import { useState } from 'react'
+
 export function Plan ({ plan }) {
   const { id, planName, bannerUrl, fixedChargeCLP } = plan
+  const [open, setOpen] = useState(false)
 
+  // const handleClickOpen = () => {
+
+  // }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
   const changePlan = (planId) => {
+    setOpen(true)
     const data = {
       // planId,
       // planRequested: '1',
@@ -17,11 +30,23 @@ export function Plan ({ plan }) {
     console.log('Cambio gatilado ' + JSON.stringify(data))
   }
   return (
-    <div className='card'>
-      <img src={bannerUrl} alt='Imagen del plan' />
-      <p className='offerName'>{planName}</p>
-      <p className='offerPrice'> $ {fixedChargeCLP}</p>
-      <button onClick={() => changePlan(id)}>Cambiar Plan</button>
-    </div>
+    <Card>
+      <CardMedia
+        sx={{ height: 140 }}
+        image={bannerUrl}
+        title='Imagen de plan'
+        style={{ objectFit: 'cover' }}
+      />
+      <CardContent>
+        <Typography className='offerName'>{planName}</Typography>
+        <Typography className='offerPrice'> $ {fixedChargeCLP}</Typography>
+
+      </CardContent>
+      <CardActions>
+        <Button onClick={() => changePlan(id)}>Cambiar Plan</Button>
+        <ChangePlanModal open={open} handleClose={handleClose} />
+      </CardActions>
+
+    </Card>
   )
 }

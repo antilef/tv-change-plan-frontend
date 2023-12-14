@@ -28,8 +28,6 @@
 }
 
 .plans {
-  display: grid;
-  width: 80%;
   grid-template-columns: repeat(
     auto-fit,
     minmax(
