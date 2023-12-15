@@ -1,18 +1,20 @@
 import { Typography, Card, CardContent } from '@mui/material'
-import { useActualPlan } from '../hooks/use-actual-plan'
+import { useContext } from 'react'
+import { PlanContext } from '../contexts/planContext'
+
 export function PlanDetails () {
-  const { actualPlan } = useActualPlan()
+  const { data } = useContext(PlanContext)
   return (
     <>
       <aside>
         <Card>
           <CardContent>
             <Typography>Detalles de mi plan</Typography>
-            <Typography>{actualPlan.name}</Typography>
+            <Typography>{data.planName}</Typography>
 
-            <Typography>{actualPlan.fixedChargeCLP}</Typography>
+            <Typography>{data.fixedChargeCLP}</Typography>
             <Typography variant='body2'>
-              {actualPlan.planDescription}
+              {data.planDescription}
             </Typography>
           </CardContent>
         </Card>
